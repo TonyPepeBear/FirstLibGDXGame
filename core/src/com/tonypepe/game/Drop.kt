@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.math.Vector3
 import java.awt.Rectangle
 
 class Drop : ApplicationAdapter() {
@@ -47,6 +48,12 @@ class Drop : ApplicationAdapter() {
             begin()
             draw(bucketImage, bucket.x.toFloat(), bucket.y.toFloat())
             end()
+        }
+        if (Gdx.input.isTouched) {
+            val touchPos = Vector3()
+            touchPos.set(Gdx.input.x.toFloat(), Gdx.input.y.toFloat(), 0f)
+            camera.unproject(touchPos)
+            bucket.x = (touchPos.x - 64 / 2).toInt()
         }
     }
 
