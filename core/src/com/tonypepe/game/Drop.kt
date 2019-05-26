@@ -2,6 +2,7 @@ package com.tonypepe.game
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input
 import com.badlogic.gdx.audio.Music
 import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.graphics.GL20
@@ -55,6 +56,15 @@ class Drop : ApplicationAdapter() {
             camera.unproject(touchPos)
             bucket.x = (touchPos.x - 64 / 2).toInt()
         }
+        when {
+            Gdx.input.isKeyPressed(Input.Keys.LEFT) -> {
+                bucket.x -= (200 * Gdx.graphics.deltaTime).toInt()
+            }
+            Gdx.input.isKeyPressed(Input.Keys.RIGHT) -> {
+                bucket.x += (200 * Gdx.graphics.deltaTime).toInt()
+            }
+        }
+        if (bucket.x < 0) bucket.x = 0 else if (bucket.x > 800 - 64) bucket.x = 800 - 64
     }
 
     override fun dispose() {
