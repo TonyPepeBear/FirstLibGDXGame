@@ -8,7 +8,7 @@ object DesktopLauncher {
     @JvmStatic
     fun main(arg: Array<String>) {
         val config = LwjglApplicationConfiguration().apply {
-            title = "Drop"
+            title = "TonyPepe"
             width = 800
             height = 400
             resizable = false
